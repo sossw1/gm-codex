@@ -2,7 +2,7 @@ import './Login.css';
 
 function Login() {
   return(
-    <form className='ui icon input'>
+    <form className='ui form icon input'>
       <div className='ui segment'>
         <div className='field'>
           <div className='ui left icon input'>
