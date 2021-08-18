@@ -2,12 +2,24 @@ import './Login.css';
 
 function Login() {
   return(
-    <form>
-      <label htmlFor='username'>Username</label><br/>
-      <input id='username' name='username' type='text'></input><br/>
-      <label htmlFor='password'>Password</label><br/>
-      <input id='password' name='password' type='password'></input><br/><br/>
-      <input id='submit' type='submit'></input>
+    <form class='ui icon input'>
+      <div class='ui stacked segment'>
+        <div class='field'>
+          <div class='ui left icon input'>
+            <i class='user circle icon'></i>
+            <input type='text' name='username' placeholder='username'></input>
+          </div>
+        </div>
+        <div class='field'>
+          <div class='ui left icon input'>
+            <i class='lock icon'></i>
+            <input type='password' name='password' placeholder='password'></input>
+          </div>
+        </div>
+        <div class='ui fluid large grey submit button'>
+          Login
+        </div>
+      </div>
     </form>
   );
 }
