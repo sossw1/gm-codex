@@ -3,7 +3,7 @@ import './Login.css';
 function Login() {
   return(
     <form className='ui icon input'>
-      <div className='ui stacked segment'>
+      <div className='ui segment'>
         <div className='field'>
           <div className='ui left icon input'>
             <i className='user circle icon'></i>
