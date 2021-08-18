@@ -2,21 +2,21 @@ import './Login.css';
 
 function Login() {
   return(
-    <form class='ui icon input'>
-      <div class='ui stacked segment'>
-        <div class='field'>
-          <div class='ui left icon input'>
-            <i class='user circle icon'></i>
+    <form className='ui icon input'>
+      <div className='ui stacked segment'>
+        <div className='field'>
+          <div className='ui left icon input'>
+            <i className='user circle icon'></i>
             <input type='text' name='username' placeholder='username'></input>
           </div>
         </div>
-        <div class='field'>
-          <div class='ui left icon input'>
-            <i class='lock icon'></i>
+        <div className='field'>
+          <div className='ui left icon input'>
+            <i className='lock icon'></i>
             <input type='password' name='password' placeholder='password'></input>
           </div>
         </div>
-        <div class='ui fluid large grey submit button'>
+        <div className='ui fluid large grey submit button'>
           Login
         </div>
       </div>
