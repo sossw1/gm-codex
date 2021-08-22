@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Auth } from 'aws-amplify';
 
 function Login() {
   const [username, setUsername] = useState('');
@@ -11,7 +12,7 @@ function Login() {
     setPassword(event.target.value);
   }
 
-  return(
+  return (
     <form className='ui form icon input'>
       <div className='ui segment'>
         <div className='field'>
@@ -27,12 +28,11 @@ function Login() {
           <div className='ui left icon input'>
             <i className='lock icon'></i>
             <input type='password' name='password' placeholder='password'
-            onChange={handlePasswordChange}></input>
+              onChange={handlePasswordChange}></input>
           </div>
         </div>
-        <div className='ui fluid large grey submit button'>
-          Login
-        </div>
+        <input type='submit' value='Login'
+          className='ui fluid large grey submit button'></input>
       </div>
     </form>
   );
