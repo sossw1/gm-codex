@@ -12,8 +12,21 @@ function Login() {
     setPassword(event.target.value);
   }
 
+  function handleSubmit(event) {
+    event.preventDefault();
+    signIn();
+  }
+
+  async function signIn() {
+    try {
+      const user = await Auth.signIn(username, password);
+    } catch (error) {
+      console.log('error signing in', error);
+    }
+  }
+
   return (
-    <form className='ui form icon input'>
+    <form className='ui form icon input' onSubmit={handleSubmit}>
       <div className='ui segment'>
         <div className='field'>
           <div className='ui left icon input'>
