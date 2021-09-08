@@ -30,9 +30,17 @@ function App() {
       {
         formType === 'signIn' && (
           <div>
-            <input name='username' onchange={onChange} placeholder='username' /><br/>
-            <input name='password' type='password' onchange={onChange} placeholder='password' /><br/>
+            <input name='username' onchange={onChange} placeholder='username' /><br />
+            <input name='password' type='password' onchange={onChange} placeholder='password' /><br />
             <button>Sign In</button>
+          </div>
+        )
+      }
+      {
+        formType === 'confirmSignUp' && (
+          <div>
+            <input name='authCode' onchange={onChange} placeholder='Confirmation code' /><br />
+            <button>Confirm Sign Up</button>
           </div>
         )
       }
