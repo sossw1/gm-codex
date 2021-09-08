@@ -1,25 +1,10 @@
 {
   "auth": {
-    "gmcodex5658589d": {
+    "gmcodex8de58f0d": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
       "customAuth": false
-    },
-    "userPoolGroups": {
-      "service": "Cognito-UserPool-Groups",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": [
-        {
-          "category": "auth",
-          "resourceName": "gmcodex5658589d",
-          "attributes": [
-            "UserPoolId",
-            "AppClientIDWeb",
-            "AppClientID"
-          ]
-        }
-      ]
     }
   }
 }
