@@ -1,6 +1,7 @@
 import './App.css';
 import Login from './pages/auth/Login';
 import React, { useState, useEffect } from 'react';
+import { Auth } from 'aws-amplify';
 
 function App() {
   const initialFormState = {
@@ -10,10 +11,16 @@ function App() {
   const [formState, setFormState] = useState(initialFormState);
   function onChange(e) {
     e.persist();
-    setFormState(() => ({ ...formState, [e.target.name]: e.target.value }))
+    setFormState(() => ({ ...formState, [e.target.name]: e.target.value }));
   }
 
   const { formType } = formState;
+
+  async function signUp() {
+    const { username, email, password } = formState;
+    await Auth.signUp({ username, password, attributes: { email } });
+    setFormState(() => ({ ...formState, formType: 'confirmSignUp' }));
+  }
 
   return (
     <div className="App">
