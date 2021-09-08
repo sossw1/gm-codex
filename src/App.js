@@ -7,6 +7,10 @@ function App() {
     username: '', password: '', email: '', authCode: '', formType: 'signUp'
   }
   const [formState, setFormState] = useState(initialFormState);
+  function onChange(e) {
+    e.persist();
+    setFormState(() => ({...formState, [e.target.name]: e.target.value}))
+  }
 
   return (
     <div className="App">
