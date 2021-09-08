@@ -22,6 +22,12 @@ function App() {
     setFormState(() => ({ ...formState, formType: 'confirmSignUp' }));
   }
 
+  async function confirmSignUp() {
+    const { username, authCode } = formState;
+    await Auth.confirmSignUp(username, authCode);
+    setFormState(() => ({ ...formState, formType: 'signIn' }));
+  }
+
   return (
     <div className="App">
       {
