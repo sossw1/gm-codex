@@ -1,39 +1,13 @@
-import { useState } from 'react';
-import { Auth } from 'aws-amplify';
-
-function Login() {
-  const [username, setUsername] = useState('');
-  function handleUsernameChange(event) {
-    setUsername(event.target.value);
-  }
-
-  const [password, setPassword] = useState('');
-  function handlePasswordChange(event) {
-    setPassword(event.target.value);
-  }
-
-  function handleSubmit(event) {
-    event.preventDefault();
-    signIn();
-  }
-
-  async function signIn() {
-    try {
-      const user = await Auth.signIn(username, password);
-    } catch (error) {
-      console.log('error signing in', error);
-    }
-  }
-
+function Login(props) {
   return (
-    <form className='ui form icon input' onSubmit={handleSubmit}>
+    <form className='ui form icon input' onSubmit={props.signIn}>
       <div className='ui segment'>
         <div className='field'>
           <div className='ui left icon input'>
             <i className='user circle icon'></i>
             <input
               type='text' name='username' placeholder='username'
-              onChange={handleUsernameChange}
+              onChange={props.onChange}
             ></input>
           </div>
         </div>
@@ -41,7 +15,7 @@ function Login() {
           <div className='ui left icon input'>
             <i className='lock icon'></i>
             <input type='password' name='password' placeholder='password'
-              onChange={handlePasswordChange}></input>
+              onChange={props.onChange}></input>
           </div>
         </div>
         <input type='submit' value='Login'
