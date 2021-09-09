@@ -42,7 +42,7 @@ function App() {
             <input name='username' onchange={onChange} placeholder='username' /><br />
             <input name='email' onchange={onChange} placeholder='email' /><br />
             <input name='password' type='password' onchange={onChange} placeholder='password' /><br />
-            <button>Sign Up</button>
+            <button onClick={signUp}>Sign Up</button>
           </div>
         )
       }
@@ -50,7 +50,7 @@ function App() {
         formType === 'confirmSignUp' && (
           <div>
             <input name='authCode' onchange={onChange} placeholder='Confirmation code' /><br />
-            <button>Confirm Sign Up</button>
+            <button onClick={confirmSignUp}>Confirm Sign Up</button>
           </div>
         )
       }
@@ -59,7 +59,7 @@ function App() {
           <div>
             <input name='username' onchange={onChange} placeholder='username' /><br />
             <input name='password' type='password' onchange={onChange} placeholder='password' /><br />
-            <button>Sign In</button>
+            <button onClick={signIn}>Sign In</button>
           </div>
         )
       }
