@@ -42,7 +42,7 @@ function App() {
   async function confirmSignUp() {
     const { username, authCode } = formState;
     await Auth.confirmSignUp(username, authCode);
-    setFormState(() => ({ ...formState, formType: 'signIn' }));
+    setFormState(() => ({ ...formState, formType: 'signedIn' }));
   }
 
   async function signIn() {
