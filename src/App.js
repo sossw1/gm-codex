@@ -4,11 +4,11 @@ import React, { useState, useEffect } from 'react';
 import { Auth } from 'aws-amplify';
 
 function App() {
-  const initialFormState = {
-    username: '', password: '', email: '', authCode: '', formType: 'signIn'
+  const initialAuthState = {
+    username: '', password: '', email: '', authCode: '', authStatus: 'signIn'
   }
 
-  const [formState, setFormState] = useState(initialFormState);
+  const [authState, setAuthState] = useState(initialAuthState);
   const [user, setUser] = useState(null);
 
   async function checkUser() {
@@ -16,7 +16,7 @@ function App() {
       const user = await Auth.currentAuthenticatedUser();
       setUser(user);
       console.log('user: ', user);
-      setFormState(() => ({ ...formState, formType: 'signedIn' }));
+      setAuthState(() => ({ ...authState, authStatus: 'signedIn' }));
     } catch (error) {
       // setUser(null);
     }
@@ -28,38 +28,38 @@ function App() {
 
   function onChange(e) {
     e.persist();
-    setFormState(() => ({ ...formState, [e.target.name]: e.target.value }));
+    setAuthState(() => ({ ...authState, [e.target.name]: e.target.value }));
   }
 
-  const { formType } = formState;
+  const { authStatus } = authState;
 
   async function signUp() {
-    const { username, email, password } = formState;
+    const { username, email, password } = authState;
     await Auth.signUp({ username, password, attributes: { email } });
-    setFormState(() => ({ ...formState, formType: 'confirmSignUp' }));
+    setAuthState(() => ({ ...authState, authStatus: 'confirmSignUp' }));
   }
 
   async function confirmSignUp() {
-    const { username, authCode } = formState;
+    const { username, authCode } = authState;
     await Auth.confirmSignUp(username, authCode);
-    setFormState(() => ({ ...formState, formType: 'signedIn' }));
+    setAuthState(() => ({ ...authState, authStatus: 'signedIn' }));
   }
 
   async function signIn() {
-    const { username, password } = formState;
+    const { username, password } = authState;
     await Auth.signIn(username, password);
-    setFormState(() => ({ ...formState, formType: 'signedIn' }));
+    setAuthState(() => ({ ...authState, authStatus: 'signedIn' }));
   }
 
   async function signOut() {
     await Auth.signOut();
-    setFormState(() => ({ ...formState, formType: 'signIn' }))
+    setAuthState(() => ({ ...authState, authStatus: 'signIn' }))
   }
 
   return (
     <div className="App">
       {
-        formType === 'signUp' && (
+        authStatus === 'signUp' && (
           <div>
             <input name='username' onChange={onChange} placeholder='username' /><br />
             <input name='email' onChange={onChange} placeholder='email' /><br />
@@ -69,7 +69,7 @@ function App() {
         )
       }
       {
-        formType === 'confirmSignUp' && (
+        authStatus === 'confirmSignUp' && (
           <div>
             <input name='authCode' onChange={onChange} placeholder='Confirmation code' /><br />
             <button onClick={confirmSignUp}>Confirm Sign Up</button>
@@ -77,7 +77,7 @@ function App() {
         )
       }
       {
-        formType === 'signIn' && (
+        authStatus === 'signIn' && (
           <div>
             <input name='username' onChange={onChange} placeholder='username' /><br />
             <input name='password' type='password' onChange={onChange} placeholder='password' /><br />
@@ -86,7 +86,7 @@ function App() {
         )
       }
       {
-        formType === 'signedIn' && (
+        authStatus === 'signedIn' && (
           <div>
             <button onClick={signOut}>Sign Out</button>
           </div>
