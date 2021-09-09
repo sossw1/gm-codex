@@ -27,7 +27,6 @@ function App() {
   }, []);
 
   function onChange(e) {
-    e.persist();
     setAuthState(() => ({ ...authState, [e.target.name]: e.target.value }));
   }
 
