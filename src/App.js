@@ -9,6 +9,23 @@ function App() {
   }
 
   const [formState, setFormState] = useState(initialFormState);
+  const [user, setUser] = useState(null);
+
+  async function checkUser() {
+    try {
+      const user = await Auth.currentAuthenticatedUser();
+      setUser(user);
+      console.log('user: ', user);
+      setFormState(() => ({ ...formState, formType: 'signedIn' }));
+    } catch(error) {
+      // setUser(null);
+    }
+  }
+
+  useEffect(() => {
+    checkUser();
+  }, []);
+
   function onChange(e) {
     e.persist();
     setFormState(() => ({ ...formState, [e.target.name]: e.target.value }));
