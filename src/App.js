@@ -17,7 +17,7 @@ function App() {
       setUser(user);
       console.log('user: ', user);
       setFormState(() => ({ ...formState, formType: 'signedIn' }));
-    } catch(error) {
+    } catch (error) {
       // setUser(null);
     }
   }
@@ -51,6 +51,11 @@ function App() {
     setFormState(() => ({ ...formState, formType: 'signedIn' }));
   }
 
+  async function signOut() {
+    await Auth.signOut();
+    setFormState(() => ({ ...formState, formType: 'signIn' }))
+  }
+
   return (
     <div className="App">
       {
@@ -77,6 +82,13 @@ function App() {
             <input name='username' onChange={onChange} placeholder='username' /><br />
             <input name='password' type='password' onChange={onChange} placeholder='password' /><br />
             <button onClick={signIn}>Sign In</button>
+          </div>
+        )
+      }
+      {
+        formType === 'signedIn' && (
+          <div>
+            <button onClick={signOut}>Sign Out</button>
           </div>
         )
       }
