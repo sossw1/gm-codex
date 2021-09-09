@@ -28,6 +28,12 @@ function App() {
     setFormState(() => ({ ...formState, formType: 'signIn' }));
   }
 
+  async function signIn() {
+    const { username, password } = formState;
+    await Auth.signIn(username, password);
+    setFormState(() => ({ ...formState, formType: 'signedIn' }));
+  }
+
   return (
     <div className="App">
       {
