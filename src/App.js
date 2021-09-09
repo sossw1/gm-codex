@@ -39,9 +39,9 @@ function App() {
       {
         formType === 'signUp' && (
           <div>
-            <input name='username' onchange={onChange} placeholder='username' /><br />
-            <input name='email' onchange={onChange} placeholder='email' /><br />
-            <input name='password' type='password' onchange={onChange} placeholder='password' /><br />
+            <input name='username' onChange={onChange} placeholder='username' /><br />
+            <input name='email' onChange={onChange} placeholder='email' /><br />
+            <input name='password' type='password' onChange={onChange} placeholder='password' /><br />
             <button onClick={signUp}>Sign Up</button>
           </div>
         )
@@ -49,7 +49,7 @@ function App() {
       {
         formType === 'confirmSignUp' && (
           <div>
-            <input name='authCode' onchange={onChange} placeholder='Confirmation code' /><br />
+            <input name='authCode' onChange={onChange} placeholder='Confirmation code' /><br />
             <button onClick={confirmSignUp}>Confirm Sign Up</button>
           </div>
         )
@@ -57,8 +57,8 @@ function App() {
       {
         formType === 'signIn' && (
           <div>
-            <input name='username' onchange={onChange} placeholder='username' /><br />
-            <input name='password' type='password' onchange={onChange} placeholder='password' /><br />
+            <input name='username' onChange={onChange} placeholder='username' /><br />
+            <input name='password' type='password' onChange={onChange} placeholder='password' /><br />
             <button onClick={signIn}>Sign In</button>
           </div>
         )
