@@ -1,5 +1,6 @@
 import './App.css';
 import Login from './pages/auth/Login';
+import SignUp from './pages/auth/SignUp';
 import React, { useState, useEffect } from 'react';
 import { Auth } from 'aws-amplify';
 
@@ -59,12 +60,7 @@ function App() {
     <div className="App">
       {
         authStatus === 'signUp' && (
-          <div>
-            <input name='username' onChange={onChange} placeholder='username' /><br />
-            <input name='email' onChange={onChange} placeholder='email' /><br />
-            <input name='password' type='password' onChange={onChange} placeholder='password' /><br />
-            <button onClick={signUp}>Sign Up</button>
-          </div>
+          <SignUp onChange={onChange} signUp={signUp} />
         )
       }
       {
