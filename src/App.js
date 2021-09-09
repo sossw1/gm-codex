@@ -77,11 +77,7 @@ function App() {
       }
       {
         authStatus === 'signIn' && (
-          <div>
-            <input name='username' onChange={onChange} placeholder='username' /><br />
-            <input name='password' type='password' onChange={onChange} placeholder='password' /><br />
-            <button onClick={signIn}>Sign In</button>
-          </div>
+          <Login onChange={onChange} signIn={signIn}/>
         )
       }
       {
