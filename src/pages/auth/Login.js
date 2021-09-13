@@ -1,3 +1,5 @@
+import '../../App.css';
+
 function Login(props) {
   return (
     <form className='ui form icon input' onSubmit={props.signIn}>
@@ -20,6 +22,7 @@ function Login(props) {
         </div>
         <input type='submit' value='Login'
           className='ui fluid large grey submit button'></input>
+        <p>Don't have an account? <span className='link' onClick={props.goToSignUp}>Sign up</span></p>
       </div>
     </form>
   );
