@@ -55,7 +55,11 @@ function App() {
 
   async function signOut() {
     await Auth.signOut();
-    setAuthState(() => ({ ...authState, authStatus: 'signIn' }))
+    setAuthState(() => ({ ...authState, authStatus: 'signIn' }));
+  }
+
+  function goToSignUp() {
+    setAuthState(() => ({ ...authState, authStatus: 'signUp' }));
   }
 
   return (
@@ -72,7 +76,7 @@ function App() {
       }
       {
         authStatus === 'signIn' && (
-          <Login onChange={onChange} signIn={signIn}/>
+          <Login onChange={onChange} signIn={signIn} goToSignUp={goToSignUp}/>
         )
       }
       {
