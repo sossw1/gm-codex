@@ -26,7 +26,7 @@ function App() {
 
   useEffect(() => {
     checkUser();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function onChange(e) {
@@ -58,15 +58,15 @@ function App() {
     setAuthState(() => ({ ...authState, authStatus: 'signIn' }));
   }
 
-  function goToSignUp() {
-    setAuthState(() => ({ ...authState, authStatus: 'signUp' }));
+  function authLink(status) {
+    setAuthState(() => ({ ...authState, authStatus: status }));
   }
 
   return (
     <div className="App">
       {
         authStatus === 'signUp' && (
-          <SignUp onChange={onChange} signUp={signUp} />
+          <SignUp onChange={onChange} signUp={signUp} authLink={authLink} />
         )
       }
       {
@@ -76,7 +76,7 @@ function App() {
       }
       {
         authStatus === 'signIn' && (
-          <Login onChange={onChange} signIn={signIn} goToSignUp={goToSignUp}/>
+          <Login onChange={onChange} signIn={signIn} authLink={authLink} />
         )
       }
       {
