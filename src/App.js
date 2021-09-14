@@ -35,19 +35,22 @@ function App() {
 
   const { authStatus } = authState;
 
-  async function signUp() {
+  async function signUp(e) {
+    e.preventDefault();
     const { username, email, password } = authState;
     await Auth.signUp({ username, password, attributes: { email } });
     setAuthState(() => ({ ...authState, authStatus: 'confirmSignUp' }));
   }
 
-  async function confirmSignUp() {
+  async function confirmSignUp(e) {
+    e.preventDefault();
     const { username, authCode } = authState;
     await Auth.confirmSignUp(username, authCode);
     setAuthState(() => ({ ...authState, authStatus: 'signedIn' }));
   }
 
-  async function signIn() {
+  async function signIn(e) {
+    e.preventDefault();
     const { username, password } = authState;
     await Auth.signIn(username, password);
     setAuthState(() => ({ ...authState, authStatus: 'signedIn' }));
