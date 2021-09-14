@@ -1,5 +1,5 @@
 function SignUp(props) {
-  return(
+  return (
     <form className='ui form icon input' onSubmit={props.signUp}>
       <div className='ui segment'>
         <div className='field'>
@@ -29,6 +29,7 @@ function SignUp(props) {
         </div>
         <input type='submit' value='Sign Up'
           className='ui fluid large grey submit button'></input>
+        <p>Already have an account? <span className='link' onClick={() => props.authLink('signIn')}>Sign In</span></p>
       </div>
     </form>
   )
