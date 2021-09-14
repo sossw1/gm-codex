@@ -22,7 +22,7 @@ function Login(props) {
         </div>
         <input type='submit' value='Login'
           className='ui fluid large grey submit button'></input>
-        <p>Don't have an account? <span className='link' onClick={props.goToSignUp}>Sign up</span></p>
+        <p>Don't have an account? <span className='link' onClick={() => props.authLink('signUp')}>Sign up</span></p>
       </div>
     </form>
   );
