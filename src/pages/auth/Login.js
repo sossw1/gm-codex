@@ -3,7 +3,7 @@ import '../../App.css';
 function Login(props) {
   return (
     <div className='ui two column padded grid'>
-      <div className='column'>
+      <div className='full-height column'>
         <div></div>
           <form className='ui form icon input' onSubmit={props.signIn}>
             <div className='ui segment'>
@@ -30,7 +30,7 @@ function Login(props) {
           </form>
 
       </div>
-      <div className='column'>
+      <div className='full-height column'>
         
       </div>
     </div>
