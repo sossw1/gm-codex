@@ -33,7 +33,7 @@ function Login(props) {
 
         </div>
         <div className='full-height column'>
-          <img class="ui fluid image" alt='map' src={map}/>
+          <img className="ui fluid image" alt='map' src={map}/>
         </div>
       </div>
     </div>
