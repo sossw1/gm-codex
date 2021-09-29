@@ -3,8 +3,9 @@ import '../../App.css';
 function Login(props) {
   return (
     <div className='ui two column padded grid'>
-      <div className='full-height column'>
-        <div></div>
+      <div className='row'>
+        <div className='full-height column'>
+          <div></div>
           <form className='ui form icon input' onSubmit={props.signIn}>
             <div className='ui segment'>
               <div className='field'>
@@ -29,9 +30,10 @@ function Login(props) {
             </div>
           </form>
 
-      </div>
-      <div className='full-height column'>
-        
+        </div>
+        <div className='full-height column'>
+
+        </div>
       </div>
     </div>
   );
