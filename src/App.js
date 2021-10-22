@@ -6,89 +6,38 @@ import React, { useState, useEffect } from 'react';
 import { Auth } from 'aws-amplify';
 
 function App() {
-  const initialAuthState = {
-    username: '', password: '', email: '', authCode: '', authStatus: 'signIn'
-  }
-
-  const [authState, setAuthState] = useState(initialAuthState);
-  const [user, setUser] = useState(null);
-
-  async function checkUser() {
-    try {
-      const user = await Auth.currentAuthenticatedUser();
-      setUser(user);
-      console.log('user: ', user);
-      setAuthState(() => ({ ...authState, authStatus: 'signedIn' }));
-    } catch (error) {
-      // setUser(null);
-    }
-  }
-
-  useEffect(() => {
-    checkUser();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const [authState, setAuthState] = useState({
+    username: '', password: '', email: '', authCode: ''
+  });
 
   function onChange(e) {
     setAuthState(() => ({ ...authState, [e.target.name]: e.target.value }));
   }
 
-  const { authStatus } = authState;
-
   async function signUp(e) {
     e.preventDefault();
     const { username, email, password } = authState;
     await Auth.signUp({ username, password, attributes: { email } });
-    setAuthState(() => ({ ...authState, authStatus: 'confirmSignUp' }));
+    // redirect
   }
 
   async function confirmSignUp(e) {
     e.preventDefault();
     const { username, authCode } = authState;
     await Auth.confirmSignUp(username, authCode);
-    setAuthState(() => ({ ...authState, authStatus: 'signedIn' }));
+    // redirect
   }
 
   async function signIn(e) {
     e.preventDefault();
     const { username, password } = authState;
     await Auth.signIn(username, password);
-    setAuthState(() => ({ ...authState, authStatus: 'signedIn' }));
-  }
-
-  async function signOut() {
-    await Auth.signOut();
-    setAuthState(() => ({ ...authState, authStatus: 'signIn' }));
-  }
-
-  function authLink(status) {
-    setAuthState(() => ({ ...authState, authStatus: status }));
+    // redirect
   }
 
   return (
     <div className="App">
-      {
-        authStatus === 'signUp' && (
-          <SignUp onChange={onChange} signUp={signUp} authLink={authLink} />
-        )
-      }
-      {
-        authStatus === 'confirmSignUp' && (
-          <ConfirmSignUp onChange={onChange} confirmSignUp={confirmSignUp} />
-        )
-      }
-      {
-        authStatus === 'signIn' && (
-          <Login onChange={onChange} signIn={signIn} authLink={authLink} />
-        )
-      }
-      {
-        authStatus === 'signedIn' && (
-          <div>
-            <button onClick={signOut}>Sign Out</button>
-          </div>
-        )
-      }
+      
     </div>
   );
 }
